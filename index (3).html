@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>グランピング</title>
+    <style>
+        :root { --main-blue: #4a90e2; --sub-gray: #f4f7f6; --text-color: #333; --map-blue: #34a853; --accent-orange: #f39c12; }
+        body { font-family: "Helvetica Neue", Arial, sans-serif; line-height: 1.6; color: var(--text-color); margin: 0; padding: 0; background-color: var(--sub-gray); }
+        header { background: var(--main-blue); color: white; text-align: center; padding: 1rem; }
+        h1 { margin: 0; font-size: 1.1rem; }
+
+        .tab-menu { display: flex; background: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .tab-btn { flex: 1; padding: 15px 5px; border: none; background: none; font-size: 0.85rem; font-weight: bold; color: #888; border-bottom: 3px solid transparent; cursor: pointer; }
+        .tab-btn.active { color: var(--main-blue); border-bottom: 3px solid var(--main-blue); }
+
+        .container { max-width: 500px; margin: 0 auto; padding: 15px; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        section { background: white; border-radius: 12px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        h2 { border-left: 5px solid var(--main-blue); padding-left: 10px; font-size: 1rem; color: var(--main-blue); margin-top: 0; margin-bottom: 10px; }
+        
+        .map-link { 
+            display: inline-flex; align-items: center; background: #fff; border: 1px solid var(--map-blue); 
+            color: var(--map-blue); padding: 6px 14px; border-radius: 20px; text-decoration: none; 
+            font-size: 0.8rem; font-weight: bold; margin-top: 8px; margin-bottom: 10px;
+        }
+
+        .group-box { background: #eef6ff; border-radius: 8px; padding: 10px; margin-bottom: 10px; border: 1px solid #d0e3ff; }
+        .group-time { font-weight: bold; color: #d0021b; font-size: 0.9rem; }
+        .members { font-size: 0.8rem; color: #666; margin-top: 2px; }
+
+        .shop-title { font-weight: bold; color: var(--accent-orange); margin-top: 15px; display: block; border-bottom: 1px solid #eee; }
+        .check-item { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #f9f9f9; cursor: pointer; font-size: 0.9rem; }
+        .check-item input { margin-right: 10px; width: 18px; height: 18px; }
+
+        .notice { background: #fff9e6; padding: 10px; border-radius: 8px; font-size: 0.85rem; margin-top: 10px; border: 1px solid #ffeeba; }
+        .price { font-weight: bold; color: #d0021b; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>八幡中OBグランピング</h1>
+</header>
+
+<div class="tab-menu">
+    <button id="btn1" class="tab-btn active" onclick="changeTab('tab1', 'btn1')">予定・Map</button>
+    <button id="btn2" class="tab-btn" onclick="changeTab('tab2', 'btn2')">買い物</button>
+    <button id="btn3" class="tab-btn" onclick="changeTab('tab3', 'btn3')">予算・持物</button>
+</div>
+
+<div class="container">
+    <div id="tab1" class="tab-content active">
+        <section>
+            <h2>⏰ 1日目：集合場所</h2>
+            <div class="group-box">
+                <div class="group-time">08:05 | LL横セブン</div>
+                <div class="members">悠磨 / 横堀 / 啓介 / 潤晴 / 莉玖</div>
+                <a href="https://www.google.com/maps/search/?api=1&query=埼玉県草加市稲荷2丁目38-2" target="_blank" class="map-link">📍 Map</a>
+            </div>
+            <div class="group-box">
+                <div class="group-time">08:10 | 健太 or 飯泉 宅 / 矢澤家下</div>
+                <div class="members">健太 / 飯泉 / 矢澤 / 長塚</div>
+            </div>
+            <div class="group-box">
+                <div class="group-time">08:20 | ルミナス下</div>
+                <div class="members">流我 / 弘樹</div>
+            </div>
+            <div class="group-box" style="background:#fff0f0; border-color:#ffcccc;">
+                <div class="group-time">08:30 | ミニストップ 八潮緑町店</div>
+                <div class="members">全員合流</div>
+                <a href="https://www.google.com/maps/search/?api=1&query=埼玉県八潮市緑町4丁目11-1" target="_blank" class="map-link">📍 Map</a>
+            </div>
+        </section>
+
+        <section>
+            <h2>📅 スケジュール詳細</h2>
+            <p style="font-size:0.9rem;"><strong>【1日目】</strong></p>
+            <p style="font-size:0.85rem; margin-bottom:5px;">11:00 昼食＠佐野</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=栃木県佐野市富岡町371-3" target="_blank" class="map-link">📍 佐野ラーメンMap</a>
+            
+            <p style="font-size:0.85rem; margin-bottom:5px;">16:00 チェックイン</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=栃木県那須郡那須町大字高久乙宇遅山3376番地" target="_blank" class="map-link">📍 宿泊先Map</a>
+
+            <hr style="margin:15px 0; border:0; border-top:1px solid #eee;">
+
+            <p style="font-size:0.9rem;"><strong>【2日目】</strong></p>
+            <p style="font-size:0.85rem; margin-bottom:5px;">11:00 宇都宮餃子通り</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=宇都宮餃子通り" target="_blank" class="map-link">📍 餃子通りMap</a>
+            
+            <p style="font-size:0.85rem; margin-top:10px; margin-bottom:5px;">13:00 いちご狩り：出会いの森いちご園<br><span style="font-size:0.75rem; color:#666;">〒322-0047 栃木県鹿沼市酒野谷929-1</span></p>
+            <a href="https://www.google.com/maps/search/?api=1&query=栃木県鹿沼市酒野谷929-1" target="_blank" class="map-link">📍 いちご狩りMap</a>
+        </section>
+    </div>
+
+    <div id="tab2" class="tab-content">
+        <section>
+            <h2>🛒 買い物チェックリスト</h2>
+            <span class="shop-title"> コストコ 壬生倉庫店</span>
+            <label class="check-item"><input type="checkbox">肉（タン・カルビ・ロース・ハラミ）</label>
+            <label class="check-item"><input type="checkbox">魚（刺身など）</label>
+            <label class="check-item"><input type="checkbox">デザート</label>
+            <a href="https://www.google.com/maps/search/?api=1&query=栃木県下都賀郡壬生町安塚3360" target="_blank" class="map-link">📍 Map</a>
+
+            <span class="shop-title"> ベルク おもちゃのまち店</span>
+            <label class="check-item"><input type="checkbox">野菜</label>
+            <label class="check-item"><input type="checkbox">米 2kg</label>
+            <label class="check-item"><input type="checkbox">お酒</label>
+            <a href="https://www.google.com/maps/search/?api=1&query=栃木県下都賀郡壬生町おもちゃのまち3丁目1-27" target="_blank" class="map-link">📍 Map</a>
+
+            <span class="shop-title"> カインズ 壬生店</span>
+            <label class="check-item"><input type="checkbox">網（BBQ用 50×45）</label>
+            <a href="https://www.google.com/maps/search/?api=1&query=栃木県下都賀郡壬生町安塚3378" target="_blank" class="map-link">📍 Map</a>
+        </section>
+    </div>
+
+    <div id="tab3" class="tab-content">
+        <section>
+            <h2>💰 予算について</h2>
+            <div class="notice">
+                未払いの人：10,500円<br>
+                夜食費 4,500円 ＋ いちご狩り 2,100円 ＋ α
+            </div>
+            <div class="notice" style="background:#f0f7ff; border-color:#d0e3ff; color:#444; margin-top:15px;">
+                <strong>⚠️ 別途各自で必要なもの</strong><br>
+                ・1日目 & 2日目の昼食代<br>
+                ・各自の飲み物代
+            </div>
+        </section>
+
+        <section>
+            <h2>🧳 持ち物</h2>
+            <ul style="padding-left:20px; font-size:0.9rem;">
+                <li>着替え・部屋着</li>
+                <li>充電器</li>
+                <li>歯ブラシなど洗面用具</li>
+                <li>その他 各自必要なもの</li>
+            </ul>
+        </section>
+    </div>
+</div>
+
+<script>
+    function changeTab(tabId, btnId) {
+        var contents = document.querySelectorAll('.tab-content');
+        contents.forEach(function(c){ c.style.display = 'none'; });
+        
+        var btns = document.querySelectorAll('.tab-btn');
+        btns.forEach(function(b){ b.classList.remove('active'); });
+
+        document.getElementById(tabId).style.display = 'block';
+        document.getElementById(btnId).classList.add('active');
+        
+        window.scrollTo(0, 0);
+    }
+</script>
+
+</body>
+</html>
